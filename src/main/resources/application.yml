@@ -1,1 +1,18 @@
  # Конфигурация приложения
+ spring:
+   datasource:
+     url: jdbc:postgresql://localhost:5432/realestate
+     username: postgres
+     password: password
+     driver-class-name: org.postgresql.Driver
+   jpa:
+     hibernate:
+       ddl-auto: update
+     properties:
+       hibernate:
+         dialect: org.hibernate.dialect.PostgreSQLDialect
+ server:
+   port: 8080
+ logging:
+   level:
+     org.springframework: INFO
