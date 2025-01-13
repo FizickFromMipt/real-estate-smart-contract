@@ -26,4 +26,8 @@ public class RentalContractController {
     public RentalContract createContract(@RequestBody RentalContract contract) {
         return rentalContractService.createContract(contract);
     }
+    @PostMapping("/deploy")
+    public RentalContract createAndDeployContract(@RequestBody RentalContract contract) throws Exception {
+        return rentalContractService.createAndDeployContract(contract);
+    }
 }

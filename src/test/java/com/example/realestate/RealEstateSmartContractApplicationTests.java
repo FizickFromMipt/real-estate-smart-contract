@@ -5,6 +5,7 @@ import com.example.realestate.repository.RentalContractRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 import java.math.BigDecimal;
 
@@ -32,4 +33,18 @@ public class RealEstateSmartContractApplicationTests {
         assertNotNull(retrievedContract);
         assertEquals("0x1234", retrievedContract.getLandlordAddress());
     }
+
+    @Test
+    public void testBlockchainIntegration() throws Exception {
+        String tenantAddress = "0x5678";
+        BigDecimal amount = BigDecimal.valueOf(1000);
+        String startDate = "2025-01-01";
+        String endDate = "2025-12-31";
+
+        TransactionReceipt receipt = blockchainService.createRentalContract(
+                tenantAddress, amount.toBigInteger(), startDate, endDate);
+
+        assertNotNull(receipt.getTransactionHash());
+    }
+
 }
